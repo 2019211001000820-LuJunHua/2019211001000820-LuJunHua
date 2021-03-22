@@ -11,11 +11,14 @@
     <title>Title</title>
 </head>
 <body>
-<a href="http://www.ecjtu.jx.cn/">go to ecjtu</a>
-<form method="post">
-    Name:<input type="text" name="name"><br/>
-    ID:<input type="text" name="ID"><br/>
-    <input type="submit" value="send data to server"/>
+<form method="post" action="register"> <!--within doPost() in servlet-->
+    Username:<input type="text" name="username"><br/>
+    Password:<input type="text" name="password"><br/>
+    Email:<input type="text" name="email"><br/>
+    Gender: <input type="radio" name="gender" value="male">Male<input type="radio" name="gender" value="female">Female<br/>
+    <!--if name is same it make array -->
+    Date of Birth:<input type="text name" name="birthdate" ><br/>
+    <input type="submit" value="Register"/>
 </form>
 </body>
 </html>
