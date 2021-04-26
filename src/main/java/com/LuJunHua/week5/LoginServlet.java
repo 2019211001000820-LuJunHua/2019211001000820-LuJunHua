@@ -1,17 +1,14 @@
-
 package com.LuJunHua.week5;
 
-        import com.LuJunHua.dao.UserDao;
-        import com.LuJunHua.model.User;
-        import sun.security.util.Password;
+import com.LuJunHua.dao.UserDao;
+import com.LuJunHua.model.User;
 
-        import javax.servlet.*;
-        import javax.servlet.http.*;
-        import javax.servlet.annotation.*;
-        import java.io.IOException;
-        import java.io.PrintWriter;
-        import java.sql.*;
-        import java.text.SimpleDateFormat;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
+import java.io.IOException;
+import java.sql.*;
+
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
     Connection con=null;
@@ -23,7 +20,6 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
         request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
     }
 
@@ -31,12 +27,26 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String Username=request.getParameter("Username");
         String password=request.getParameter("password");
-        String sql="select * from Usertable where username=? and password=?";
         UserDao userDao=new UserDao();
         try {
             User user=userDao.findByUsernamePassword(con,Username, password);
             if(user!=null){
-                request.setAttribute("user",user);
+                String rememberMe=request.getParameter("rememberMe");
+                if(rememberMe!=null&&rememberMe.equals("1")){
+                    Cookie usernameCookie=new Cookie("cUsername",user.getUsernamne());
+                    Cookie passwordCookie=new Cookie("cPassword",user.getPassword());
+                    Cookie rememberMeCookie=new Cookie("cRememberMe",rememberMe);
+                    usernameCookie.setMaxAge(5);
+                    passwordCookie.setMaxAge(5);
+                    rememberMeCookie.setMaxAge(5);
+                    response.addCookie(usernameCookie);
+                    response.addCookie(passwordCookie);
+                    response.addCookie(rememberMeCookie);
+                }
+                HttpSession session=request.getSession();
+                System.out.println("session id-->"+session.getId());
+                session.setMaxInactiveInterval(10);
+                session.setAttribute("user",user);
                 request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
             }else{
                 request.setAttribute("message","Username or password Error!!!");
@@ -56,7 +66,7 @@ public class LoginServlet extends HttpServlet {
             if(rs.next()){
                 /*out.println("Login Success!!!");
                 out.println("Welcome,"+Username);*/
-        /*request.setAttribute("id",rs.getInt("id"));
+        //request.setAttribute("id",rs.getInt("id"));
                 /*request.setAttribute("id",rs.getInt("id"));
                 request.setAttribute("username",rs.getString("username"));
                 request.setAttribute("password",rs.getString("password"));
