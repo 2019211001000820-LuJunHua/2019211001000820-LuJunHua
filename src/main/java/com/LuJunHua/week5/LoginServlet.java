@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
         try {
             User user=userDao.findByUsernamePassword(con,Username, password);
             if(user!=null){
-                String rememberMe=request.getParameter("rememberMe");
+                String rememberMe=request.getParameter("remember");
                 if(rememberMe!=null&&rememberMe.equals("1")){
                     Cookie usernameCookie=new Cookie("cUsername",user.getUsernamne());
                     Cookie passwordCookie=new Cookie("cPassword",user.getPassword());
@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
             if(rs.next()){
                 /*out.println("Login Success!!!");
                 out.println("Welcome,"+Username);*/
-        //request.setAttribute("id",rs.getInt("id"));
+        /*request.setAttribute("id",rs.getInt("id"));
                 /*request.setAttribute("id",rs.getInt("id"));
                 request.setAttribute("username",rs.getString("username"));
                 request.setAttribute("password",rs.getString("password"));
