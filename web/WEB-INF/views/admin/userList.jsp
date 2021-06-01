@@ -1,4 +1,4 @@
-<%@include file="../../../../../../Tencent Files/2906826049/FileRecv/9.Files/9.Files/9.Files/views/header.jsp" %>
+<%@include file="../../../../../../Tencent/2906826049/FileRecv/9.Files/9.Files/9.Files/views/header.jsp" %>
 
 <section id="z`z`">
 	<div class="container">
@@ -36,28 +36,38 @@
 				<tbody>
 				<!-- loop_start -->
 
-				<tr>
-					<td class="cart_description">
-						<p>username</p>
-					</td>
-					<td class="cart_description">
-						<p>password</p>
-					</td>
-					<td class="cart_description">
-						<p>email </p>
-					</td>
-					<td class="cart_description">
-						<p>gender </p>
-					</td>
-					<td class="cart_description">
-						<p >birthDate</p>
-					</td>
+				<sql:setDataSource var="myDS"
+								   driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+								   url="jdbc:sqlserver://localhost;databaseName=userdb;"
+								   user="sa"
+								   password="123456"/>
+				<sql:query var="allUser" dataSource="${myDS}">
+					Select * from Usertable;
+				</sql:query>
+				<c:forEach var="row" items="${allUser.rows}">
+					<tr>
+						<td class="cart_description">
+							<p>${row.username}</p>
+						</td>
+						<td class="cart_description">
+							<p>${row.password}</p>
+						</td>
+						<td class="cart_description">
+							<p>${row.email} </p>
+						</td>
+						<td class="cart_description">
+							<p>${row.gender} </p>
+						</td>
+						<td class="cart_description">
+							<p >${row.birthDate}</p>
+						</td>
 
-					<td class="cart_delete">
-						<a class="cart_quantity_update" href="<%=basePath %>admin/userEdit?userId=id" ><i class="fa fa-edit"></i></a>
-						<a class="cart_quantity_delete" href="<%=basePath%>admin/userDelete?userId=id" ><i class="fa fa-times"></i></a>
-					</td>
-				</tr>
+						<td class="cart_delete">
+							<a class="cart_quantity_update" href="<%=basePath %>admin/userEdit?userId=${row.id}" ><i class="fa fa-edit"></i></a>
+							<a class="cart_quantity_delete" href="<%=basePath%>admin/userDelete?userId=${row.id}" ><i class="fa fa-times"></i></a>
+						</td>
+					</tr>
+				</c:forEach>
 				<!-- loop_end -->
 				</tbody>
 			</table>
@@ -72,4 +82,4 @@
 		</div>
 	</div>
 </section>
- <%@include file="../../../../../../Tencent Files/2906826049/FileRecv/9.Files/9.Files/9.Files/views/footer.jsp" %>
+ <%@include file="../../../../../../Tencent/2906826049/FileRecv/9.Files/9.Files/9.Files/views/footer.jsp" %>
