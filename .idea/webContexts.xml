@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+    <component name="WebContextManager">
+        <option name="state">
+            <map>
+                <entry key="file://$PROJECT_DIR$/src/main/web/WEB-INF/register.jsp" value="file://$PROJECT_DIR$/src/main/web/WEB-INF" />
+                <entry key="file://$PROJECT_DIR$/src/main/web/WEB-INF/views/accountDetails.jsp" value="file://$PROJECT_DIR$/src/main/web/WEB-INF/views" />
+                <entry key="file://$PROJECT_DIR$/src/main/web/WEB-INF/views/admin/orderList.jsp" value="file://$PROJECT_DIR$/src/main/web/WEB-INF/views/admin" />
+                <entry key="file://$PROJECT_DIR$/src/main/web/WEB-INF/views/admin/productList.jsp" value="file://$PROJECT_DIR$/src/main/web/WEB-INF/views/admin" />
+                <entry key="file://$PROJECT_DIR$/src/main/web/WEB-INF/views/contactUs.jsp" value="file://$PROJECT_DIR$/src/main/web/WEB-INF/views" />
+                <entry key="file://$PROJECT_DIR$/src/main/web/WEB-INF/views/cart.jsp" value="file://$PROJECT_DIR$/src/main/web/WEB-INF/views" />
+                <entry key="file://$PROJECT_DIR$/src/main/web/WEB-INF/views/updateUserView.jsp" value="file://$PROJECT_DIR$/src/main/web/WEB-INF/views" />
+                <entry key="file://$PROJECT_DIR$/src/main/web/com.LiuMeng.week2/register.jsp" value="file://$PROJECT_DIR$/src/main/web/com.LuJunHua.week2" />
+                <entry key="file://$PROJECT_DIR$/src/main/web/footer.jsp" value="file://$PROJECT_DIR$/src/main/web" />
+                <entry key="file://$PROJECT_DIR$/src/main/web/lab2/validate.jsp" value="file://$PROJECT_DIR$/src/main/web/lab2" />
+                <entry key="file://$PROJECT_DIR$/src/main/web/login.jsp" value="file://$PROJECT_DIR$/src/main/web" />
+                <entry key="file://$PROJECT_DIR$/src/main/web/userList.jsp" value="file://$PROJECT_DIR$/src/main/web" />
+            </map>
+        </option>
+    </component>
+</project>
